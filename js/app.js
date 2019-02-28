@@ -39,6 +39,7 @@ function shuffle(array) {
 
 let cnt = 0, sec = 0, min = 0;
 let intervalObj;
+let clickedCard;
 function startTimer() {
 	intervalObj = setInterval(function(){
 		cnt = cnt + 1;
@@ -59,9 +60,19 @@ function startTimer() {
 
 function startGame() {
 	startClick.remove();
+	cardClick.addEventListener('click', turnCards);
+}
+
+function turnCards(elem) {
+	clickedCard = elem.target;
+	if (clickedCard.getAttribute('class') === 'card') {
+		clickedCard.setAttribute('class', 'card open show');
+	}
 }
 
 const startClick = document.getElementById('start');
+const cardClick = document.querySelector('.deck');
 startClick.addEventListener('click', startTimer);
+
 
 
