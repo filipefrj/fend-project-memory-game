@@ -54,6 +54,11 @@ function startTimer() {
 		}
 		document.getElementById('timer').textContent = min + ":" + sec;
 	}, 1000);
+	startGame();
+}
+
+function startGame() {
+	startClick.remove();
 }
 
 const startClick = document.getElementById('start');

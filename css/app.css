@@ -96,10 +96,6 @@ img, embed, object, video {
     z-index: 1;
 }
 
-.start-hidden {
-    display: none;
-}
-
 /*
  * Styles for the Score Panel
  */
