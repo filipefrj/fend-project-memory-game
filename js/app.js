@@ -36,3 +36,27 @@ function shuffle(array) {
  *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
+
+let cnt = 0, sec = 0, min = 0;
+let intervalObj;
+function startTimer() {
+	intervalObj = setInterval(function(){
+		cnt = cnt + 1;
+		min = Math.floor(cnt / 60);
+		sec = cnt - (min * 60);
+		min = min.toString();
+		sec = sec.toString();
+		if (min.length < 2) {
+			min = "0" + min;
+		}
+		if (sec.length < 2) {
+			sec = "0" + sec;
+		}
+		document.getElementById('timer').textContent = min + ":" + sec;
+	}, 1000);
+}
+
+const startClick = document.getElementById('start');
+startClick.addEventListener('click', startTimer);
+
+
