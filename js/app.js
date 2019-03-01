@@ -37,9 +37,10 @@ function shuffle(array) {
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 
-let cnt = 0, sec = 0, min = 0;
+let cnt = 0, sec = 0, min = 0, i = 0;
 let intervalObj;
 let clickedCard;
+let compareList = [];
 function startTimer() {
 	intervalObj = setInterval(function(){
 		cnt = cnt + 1;
@@ -67,6 +68,24 @@ function turnCards(elem) {
 	clickedCard = elem.target;
 	if (clickedCard.getAttribute('class') === 'card') {
 		clickedCard.setAttribute('class', 'card open show');
+		compareCards();
+	}
+}
+
+function compareCards() {
+	compareList.push(clickedCard.firstElementChild);
+	i = compareList.length;
+	if (i % 2 === 0) {
+		if (compareList[i - 1].getAttribute('class') === compareList[i - 2].getAttribute('class')) {
+			compareList[i - 2].parentElement.setAttribute('class', 'card match');
+			compareList[i - 1].parentElement.setAttribute('class', 'card match');
+		}
+		else {
+			setTimeout(function(){
+				compareList[i - 2].parentElement.setAttribute('class', 'card');
+				compareList[i - 1].parentElement.setAttribute('class', 'card');
+			}, 300);
+		}
 	}
 }
 

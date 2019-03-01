@@ -84,6 +84,12 @@ img, embed, object, video {
     font-size: 33px;
 }
 
+.deck .card.miss {
+    cursor: default;
+    background: #ff4300;
+    font-size: 33px;
+}
+
 .start {
     background: rgba(0, 0, 0, 0.4);
     color: #fff;
