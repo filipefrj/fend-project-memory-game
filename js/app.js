@@ -87,6 +87,16 @@ function compareCards() {
 			}, 300);
 		}
 	}
+	moveCounter();
+}
+
+function moveCounter() {
+	if (i === 1) {
+		document.querySelector('.moves').textContent = i + " " + "Move";
+	}
+	else {
+		document.querySelector('.moves').textContent = i + " " + "Moves";
+	}
 }
 
 const startClick = document.getElementById('start');
