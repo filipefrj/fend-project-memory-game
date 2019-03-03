@@ -37,7 +37,8 @@ function shuffle(array) {
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 
-let cnt = 0, sec = 0, min = 0, i = 0;
+let cnt = 0, sec = 0, min = 0;
+let i = 0, r = 0, w = 0;
 let intervalObj;
 let clickedCard;
 let compareList = [];
@@ -79,12 +80,14 @@ function compareCards() {
 		if (compareList[i - 1].getAttribute('class') === compareList[i - 2].getAttribute('class')) {
 			compareList[i - 2].parentElement.setAttribute('class', 'card match');
 			compareList[i - 1].parentElement.setAttribute('class', 'card match');
+			r = r + 1;
 		}
 		else {
 			setTimeout(function(){
 				compareList[i - 2].parentElement.setAttribute('class', 'card');
 				compareList[i - 1].parentElement.setAttribute('class', 'card');
 			}, 300);
+			w = w + 1;
 		}
 	}
 	moveCounter();
@@ -96,6 +99,25 @@ function moveCounter() {
 	}
 	else {
 		document.querySelector('.moves').textContent = i + " " + "Moves";
+	}
+	starGrader();
+}
+
+function starGrader() {
+	if ((w >= 0) && (w <= 4) && (cnt < 30)) {
+		document.querySelector('.stars').innerHTML = '<li><i class="fa fa-star"></i></li><li><i class="fa fa-star"></i></li><li><i class="fa fa-star"></i></li><li><i class="fa fa-star"></i></li><li><i class="fa fa-star"></i></li>';
+	}
+	else if ((w >= 0) && (w <= 8) && (cnt < 45)) {
+		document.querySelector('.stars').innerHTML = '<li><i class="fa fa-star"></i></li><li><i class="fa fa-star"></i></li><li><i class="fa fa-star"></i></li><li><i class="fa fa-star"></i></li><li><i class="fa fa-star-o"></i></li>';
+	}
+	else if ((w >= 0) && (w <= 16) && (cnt < 60)) {
+		document.querySelector('.stars').innerHTML = '<li><i class="fa fa-star"></i></li><li><i class="fa fa-star"></i></li><li><i class="fa fa-star"></i></li><li><i class="fa fa-star-o"></i></li><li><i class="fa fa-star-o"></i></li>';
+	}
+	else if ((w >= 0) && (w <= 32) && (cnt < 120)) {
+		document.querySelector('.stars').innerHTML = '<li><i class="fa fa-star"></i></li><li><i class="fa fa-star"></i></li><li><i class="fa fa-star-o"></i></li><li><i class="fa fa-star-o"></i></li><li><i class="fa fa-star-o"></i></li>';
+	}
+	else if ((w > 32) || (cnt >= 120)) {
+		document.querySelector('.stars').innerHTML = '<li><i class="fa fa-star"></i></li><li><i class="fa fa-star-o"></i></li><li><i class="fa fa-star-o"></i></li><li><i class="fa fa-star-o"></i></li><li><i class="fa fa-star-o"></i></li>';
 	}
 }
 
