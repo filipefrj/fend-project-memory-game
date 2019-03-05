@@ -133,3 +133,31 @@ img, embed, object, video {
     float: right;
     margin: 0 5px;
 }
+
+/*
+ * Styles for the Congratulations modal
+ */
+
+ .congrat-stars {
+    padding: 0;
+    display: block;
+    margin: 0 auto;
+ }
+
+ .congrat-timer {
+    padding: 0;
+    display: block;
+    margin: 0 auto;
+ }
+
+ .congrat-moves {
+    padding: 0;
+    display: block;
+    margin: 0 auto;
+ }
+
+ .congrat-restart {
+    padding: 0;
+    display: block;
+    margin: 0 auto;
+ }

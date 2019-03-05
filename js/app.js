@@ -132,5 +132,3 @@ const startClick = document.getElementById('start');
 const cardClick = document.querySelector('.deck');
 startClick.addEventListener('click', startTimer);
 
-
-
