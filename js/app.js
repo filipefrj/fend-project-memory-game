@@ -119,6 +119,13 @@ function starGrader() {
 	else if ((w > 32) || (cnt >= 120)) {
 		document.querySelector('.stars').innerHTML = '<li><i class="fa fa-star"></i></li><li><i class="fa fa-star-o"></i></li><li><i class="fa fa-star-o"></i></li><li><i class="fa fa-star-o"></i></li><li><i class="fa fa-star-o"></i></li>';
 	}
+	if (r === 8) {
+		endGame();
+	}
+}
+
+function endGame() {
+	clearInterval(intervalObj);
 }
 
 const startClick = document.getElementById('start');
