@@ -54,9 +54,9 @@
 
         	<p id="timer" class="timer">00:00</p>
 
-            <div class="restart">
-        		<i class="fa fa-repeat"></i>
-        	</div>
+            <button onclick="location.reload(true)" class="restart">
+        		<span class="fa fa-repeat"></span>
+        	</button>
         </section>
 
         <section id="start" class="start">
@@ -137,15 +137,19 @@
 								<li><i class="fa fa-star"></i></li>
 							</ul>
 
+							<p class="congrat-message">Star Rating Message!</p>
+
 							<h3 class="congrat-moves">0 Moves</h3>
+
+							<p class="congrat-errors">0 Missed</p>
 
 							<h3 class="congrat-timer">00:00</h3>
 
 							<p class="congrat-restart">Wanna play again?</p>
 
-							<div class="congrat-play">
-								<i class="fa fa-play"></i>
-							</div>
+							<button onclick="location.reload(true)" class="congrat-play">
+        						<span class="fa fa-play"></span>
+        					</button>
 
 						</div>
 						<div class="modal-footer">

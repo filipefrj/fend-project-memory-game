@@ -42,6 +42,7 @@ let i = 0, r = 0, w = 0;
 let intervalObj;
 let clickedCard;
 let compareList = [];
+let finalStars;
 function startTimer() {
 	intervalObj = setInterval(function(){
 		cnt = cnt + 1;
@@ -106,18 +107,28 @@ function moveCounter() {
 function starGrader() {
 	if ((w >= 0) && (w <= 4) && (cnt < 30)) {
 		document.querySelector('.stars').innerHTML = '<li><i class="fa fa-star"></i></li><li><i class="fa fa-star"></i></li><li><i class="fa fa-star"></i></li><li><i class="fa fa-star"></i></li><li><i class="fa fa-star"></i></li>';
+		document.querySelector('.congrat-stars').setAttribute('class', 'congrat-stars gold');
+		document.querySelector('.congrat-message').textContent = '"Astonishing!"';
 	}
 	else if ((w >= 0) && (w <= 8) && (cnt < 45)) {
 		document.querySelector('.stars').innerHTML = '<li><i class="fa fa-star"></i></li><li><i class="fa fa-star"></i></li><li><i class="fa fa-star"></i></li><li><i class="fa fa-star"></i></li><li><i class="fa fa-star-o"></i></li>';
+		document.querySelector('.congrat-stars').setAttribute('class', 'congrat-stars silver');
+		document.querySelector('.congrat-message').textContent = '"Great!"';
 	}
 	else if ((w >= 0) && (w <= 16) && (cnt < 60)) {
 		document.querySelector('.stars').innerHTML = '<li><i class="fa fa-star"></i></li><li><i class="fa fa-star"></i></li><li><i class="fa fa-star"></i></li><li><i class="fa fa-star-o"></i></li><li><i class="fa fa-star-o"></i></li>';
+		document.querySelector('.congrat-stars').setAttribute('class', 'congrat-stars bronze');
+		document.querySelector('.congrat-message').textContent = '"Good!"';
 	}
 	else if ((w >= 0) && (w <= 32) && (cnt < 120)) {
 		document.querySelector('.stars').innerHTML = '<li><i class="fa fa-star"></i></li><li><i class="fa fa-star"></i></li><li><i class="fa fa-star-o"></i></li><li><i class="fa fa-star-o"></i></li><li><i class="fa fa-star-o"></i></li>';
+		document.querySelector('.congrat-stars').setAttribute('class', 'congrat-stars orange');
+		document.querySelector('.congrat-message').textContent = '"You can do better"';
 	}
 	else if ((w > 32) || (cnt >= 120)) {
 		document.querySelector('.stars').innerHTML = '<li><i class="fa fa-star"></i></li><li><i class="fa fa-star-o"></i></li><li><i class="fa fa-star-o"></i></li><li><i class="fa fa-star-o"></i></li><li><i class="fa fa-star-o"></i></li>';
+		document.querySelector('.congrat-stars').setAttribute('class', 'congrat-stars red');
+		document.querySelector('.congrat-message').textContent = '"You definitely should try again..."';
 	}
 	if (r === 8) {
 		endGame();
@@ -129,9 +140,13 @@ function endGame() {
 	$('#congratulations').modal('show');
 }
 
-// $('#myModal').on('show.bs.modal', function (e) {
-//   // do something...
-// })
+$('#congratulations').on('show.bs.modal', function (e) {
+	finalStars = $('.stars').html();
+	$('.congrat-stars').html(finalStars);
+	$('.congrat-moves').text(i + " " + "Moves");
+	$('.congrat-errors').text(w + " " + "Missed");
+	$('.congrat-timer').text(min + ":" + sec);
+})
 
 const startClick = document.getElementById('start');
 const cardClick = document.querySelector('.deck');

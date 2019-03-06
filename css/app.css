@@ -126,7 +126,10 @@ img, embed, object, video {
 
 .score-panel .restart {
     float: right;
-    cursor: pointer;
+    /*cursor: pointer;*/
+    border: none;
+    outline: none;
+    background-color: transparent;
 }
 
 .timer {
@@ -138,6 +141,12 @@ img, embed, object, video {
  * Styles for the Congratulations modal
  */
 
+ .congrat-errors, .congrat-message {
+    display: inline-block;
+    margin-top: -1em;
+    vertical-align: top;
+ }
+
  .congrat-play {
     display: block;
     font-size: 2em;
@@ -145,6 +154,9 @@ img, embed, object, video {
     padding-bottom: 1em;
     width: 100%;
     text-align: center;
+    border: none;
+    outline: none;
+    background-color: transparent;
 }
 
 .congrat-moves {
