@@ -126,7 +126,12 @@ function starGrader() {
 
 function endGame() {
 	clearInterval(intervalObj);
+	$('#congratulations').modal('show');
 }
+
+// $('#myModal').on('show.bs.modal', function (e) {
+//   // do something...
+// })
 
 const startClick = document.getElementById('start');
 const cardClick = document.querySelector('.deck');

@@ -138,26 +138,73 @@ img, embed, object, video {
  * Styles for the Congratulations modal
  */
 
- .congrat-stars {
-    padding: 0;
+ .congrat-play {
     display: block;
+    font-size: 2em;
     margin: 0 auto;
- }
+    padding-bottom: 1em;
+    width: 100%;
+    text-align: center;
+}
 
- .congrat-timer {
-    padding: 0;
+.congrat-moves {
     display: block;
     margin: 0 auto;
- }
+    padding: 1em;
+    width: 100%;
+    text-align: center;
+}
 
- .congrat-moves {
-    padding: 0;
+.congrat-restart {
     display: block;
     margin: 0 auto;
- }
+    padding-top: 1em;
+    width: 100%;
+    text-align: center;
+}
 
- .congrat-restart {
+.congrat-stars {
+    margin-left: -40px;
+}
+
+.congrat-stars li {
+    display: inline-block;
+    font-size: 3em;
+    list-style: none;
+    margin: 0;
     padding: 0;
+    text-align: center;
+}
+
+.congrat-stars.gold {
+    color: #d4af37;
+}
+
+.congrat-stars.silver {
+    color: #c0c0c0;
+}
+
+.congrat-stars.bronze {
+    color: #C57B4C
+}
+
+.congrat-stars.orange {
+    color: orange;
+}
+
+.congrat-stars.red {
+    color: red;
+}
+
+.congrat-timer {
     display: block;
     margin: 0 auto;
- }
+    padding: 1em;
+    width: 100%;
+    text-align: center;
+}
+
+.congrat-title {
+    text-align: center;
+    margin: 0 0 0 auto;
+}
