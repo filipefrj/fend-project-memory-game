@@ -42,6 +42,9 @@ let i = 0, r = 0, w = 0;
 let intervalObj;
 let clickedCard;
 let compareList = [];
+let deckOfCards;
+let cardsToShuffle = [];
+let shuffledCards;
 let finalStars;
 function startTimer() {
 	intervalObj = setInterval(function(){
@@ -62,6 +65,17 @@ function startTimer() {
 }
 
 function startGame() {
+	// Shuffle Cards before game starts
+	deckOfCards = document.getElementsByClassName('card');
+	for (let i = 0; s < 16; s++) {
+		cardsToShuffle.push(deckOfCards[s].firstElementChild.getAttribute('class'));
+	}
+	// Here I use the provided shuffle function
+	shuffledCards = shuffle(cardsToShuffle);
+	for (let i = 0; i < 16; i++) {
+		deckOfCards[i].firstElementChild.setAttribute('class', shuffledCards[i]);
+	}
+	// End of shuffle commands
 	startClick.remove();
 	cardClick.addEventListener('click', turnCards);
 }
