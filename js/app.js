@@ -46,6 +46,7 @@ let deckOfCards;
 let cardsToShuffle = [];
 let shuffledCards;
 let finalStars;
+
 function startTimer() {
 	intervalObj = setInterval(function(){
 		cnt = cnt + 1;
@@ -67,8 +68,8 @@ function startTimer() {
 function startGame() {
 	// Shuffle Cards before game starts
 	deckOfCards = document.getElementsByClassName('card');
-	for (let i = 0; s < 16; s++) {
-		cardsToShuffle.push(deckOfCards[s].firstElementChild.getAttribute('class'));
+	for (let i = 0; i < 16; i++) {
+		cardsToShuffle.push(deckOfCards[i].firstElementChild.getAttribute('class'));
 	}
 	// Here I use the provided shuffle function
 	shuffledCards = shuffle(cardsToShuffle);
@@ -83,6 +84,14 @@ function startGame() {
 function turnCards(elem) {
 	clickedCard = elem.target;
 	if (clickedCard.getAttribute('class') === 'card') {
+		// Add animation to turn the cards horizontally
+		clickedCard.animate([
+			{transform: 'scaleX(0)'},
+			{transform: 'scaleX(1)'}
+			],
+			200
+		);
+		// End of turning cards animation
 		clickedCard.setAttribute('class', 'card open show');
 		compareCards();
 	}
@@ -95,13 +104,49 @@ function compareCards() {
 		if (compareList[i - 1].getAttribute('class') === compareList[i - 2].getAttribute('class')) {
 			compareList[i - 2].parentElement.setAttribute('class', 'card match');
 			compareList[i - 1].parentElement.setAttribute('class', 'card match');
+			// Add animation to emphasize matched cards
+			compareList[i - 2].parentElement.animate([
+				{transform: 'scale(1.2, 1.2)'},
+				{transform: 'scale(1, 1)'}
+				],
+				300
+			);
+			// Here I need to add animation to both cards
+			compareList[i - 1].parentElement.animate([
+				{transform: 'scale(1.2, 1.2)'},
+				{transform: 'scale(1, 1)'}
+				],
+				300
+			);
+			// End of matching cards animation
 			r = r + 1;
 		}
 		else {
+			compareList[i - 2].parentElement.setAttribute('class', 'card miss');
+			compareList[i - 1].parentElement.setAttribute('class', 'card miss');
+			// Add animation to emphasizing mismatched cards
+			compareList[i - 2].parentElement.animate([
+				{transform: 'translateX(20%)'},
+				{transform: 'translateX(-20%)'},
+				{transform: 'translateX(0)'}
+				],
+				300
+			);
+			// Here I also have to add the animation to both cards
+			compareList[i - 1].parentElement.animate([
+				{transform: 'translateX(20%)'},
+				{transform: 'translateX(-20%)'},
+				{transform: 'translateX(0)'}
+				],
+				300
+			);
+			// End of mismatching cards animation
+			// This function sets a delay for cards being closed, otherwise you can't see which card you opened
 			setTimeout(function(){
 				compareList[i - 2].parentElement.setAttribute('class', 'card');
 				compareList[i - 1].parentElement.setAttribute('class', 'card');
-			}, 300);
+			}, 400);
+			// This 400ms had to be increased from 300ms after animations were added
 			w = w + 1;
 		}
 	}
