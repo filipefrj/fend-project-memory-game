@@ -124,6 +124,7 @@ function compareCards() {
 		else {
 			compareList[i - 2].parentElement.setAttribute('class', 'card miss');
 			compareList[i - 1].parentElement.setAttribute('class', 'card miss');
+			cardClick.removeEventListener('click', turnCards);
 			// Add animation to emphasizing mismatched cards
 			compareList[i - 2].parentElement.animate([
 				{transform: 'translateX(20%)'},
@@ -141,11 +142,12 @@ function compareCards() {
 				300
 			);
 			// End of mismatching cards animation
-			// This function sets a delay for cards being closed, otherwise you can't see which card you opened
+			// This function sets a delay for cards being closed, otherwise you can't see which card was opened
 			setTimeout(function(){
 				compareList[i - 2].parentElement.setAttribute('class', 'card');
 				compareList[i - 1].parentElement.setAttribute('class', 'card');
-			}, 400);
+				cardClick.addEventListener('click', turnCards);
+			}, 500);
 			// This 400ms had to be increased from 300ms after animations were added
 			w = w + 1;
 		}
