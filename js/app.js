@@ -84,14 +84,6 @@ function startGame() {
 function turnCards(elem) {
 	clickedCard = elem.target;
 	if (clickedCard.getAttribute('class') === 'card') {
-		// Add animation to turn the cards horizontally
-		clickedCard.animate([
-			{transform: 'scaleX(0)'},
-			{transform: 'scaleX(1)'}
-			],
-			200
-		);
-		// End of turning cards animation
 		clickedCard.setAttribute('class', 'card open show');
 		compareCards();
 	}
@@ -99,56 +91,98 @@ function turnCards(elem) {
 
 function compareCards() {
 	compareList.push(clickedCard.firstElementChild);
+		// Add animation to turn the first card horizontally
+		clickedCard.animate([
+			{transform: 'scaleX(0)'},
+			{transform: 'scaleX(1)'}
+			],
+			200
+		);
+		// End of turning cards animation
 	i = compareList.length;
 	if (i % 2 === 0) {
 		if (compareList[i - 1].getAttribute('class') === compareList[i - 2].getAttribute('class')) {
 			compareList[i - 2].parentElement.setAttribute('class', 'card match');
 			compareList[i - 1].parentElement.setAttribute('class', 'card match');
-			// Add animation to emphasize matched cards
-			compareList[i - 2].parentElement.animate([
-				{transform: 'scale(1.2, 1.2)'},
-				{transform: 'scale(1, 1)'}
-				],
-				300
-			);
-			// Here I need to add animation to both cards
+			// Add animation to turn the second card horizontally
 			compareList[i - 1].parentElement.animate([
-				{transform: 'scale(1.2, 1.2)'},
-				{transform: 'scale(1, 1)'}
+				{transform: 'scaleX(0)'},
+				{transform: 'scaleX(1)'}
 				],
-				300
+				200
 			);
-			// End of matching cards animation
+			// End of turning cards animation
+			setTimeout(function() {
+				// Add animation to emphasize matched cards
+				compareList[i - 2].parentElement.animate([
+					{transform: 'scale(1.3, 1.3)'},
+					{transform: 'scale(1, 1)'}
+					],
+					300
+				);
+				// Here I need to add animation to both cards
+				compareList[i - 1].parentElement.animate([
+					{transform: 'scale(1.3, 1.3)'},
+					{transform: 'scale(1, 1)'}
+					],
+					300
+				);
+				// End of matching cards animation
+			}, 200);
 			r = r + 1;
 		}
 		else {
 			compareList[i - 2].parentElement.setAttribute('class', 'card miss');
 			compareList[i - 1].parentElement.setAttribute('class', 'card miss');
-			cardClick.removeEventListener('click', turnCards);
-			// Add animation to emphasizing mismatched cards
-			compareList[i - 2].parentElement.animate([
-				{transform: 'translateX(20%)'},
-				{transform: 'translateX(-20%)'},
-				{transform: 'translateX(0)'}
-				],
-				300
-			);
-			// Here I also have to add the animation to both cards
+			// Add animation to turn the second card horizontally
 			compareList[i - 1].parentElement.animate([
-				{transform: 'translateX(20%)'},
-				{transform: 'translateX(-20%)'},
-				{transform: 'translateX(0)'}
+				{transform: 'scaleX(0)'},
+				{transform: 'scaleX(1)'}
 				],
-				300
+				200
 			);
-			// End of mismatching cards animation
+			// End of turning cards animation
+			cardClick.removeEventListener('click', turnCards);
+			setTimeout(function() {
+				// Add animation to emphasize mismatched cards
+				compareList[i - 2].parentElement.animate([
+					{transform: 'translateX(20%)'},
+					{transform: 'translateX(-20%)'},
+					{transform: 'translateX(0)'}
+					],
+					300
+				);
+				// Here I also have to add the animation to both cards
+				compareList[i - 1].parentElement.animate([
+					{transform: 'translateX(20%)'},
+					{transform: 'translateX(-20%)'},
+					{transform: 'translateX(0)'}
+					],
+					300
+				);
+				// End of mismatching cards animation
+			}, 200);
 			// This function sets a delay for cards being closed, otherwise you can't see which card was opened
-			setTimeout(function(){
+			setTimeout(function() {
 				compareList[i - 2].parentElement.setAttribute('class', 'card');
 				compareList[i - 1].parentElement.setAttribute('class', 'card');
 				cardClick.addEventListener('click', turnCards);
-			}, 500);
-			// This 400ms had to be increased from 300ms after animations were added
+				// Add animation to turn the cards back to the table
+				compareList[i - 2].parentElement.animate([
+					{transform: 'scaleX(0)'},
+					{transform: 'scaleX(1)'}
+					],
+					300
+				);
+				compareList[i - 1].parentElement.animate([
+					{transform: 'scaleX(0)'},
+					{transform: 'scaleX(1)'}
+					],
+					300
+				);
+				// End of turning cards animation
+			}, 800);
+			// This 800ms was increased from 500ms, to allow a 300ms animation pause, after the mismatched card animation
 			w = w + 1;
 		}
 	}
