@@ -46,6 +46,14 @@ let deckOfCards;
 let cardsToShuffle = [];
 let shuffledCards;
 let finalStars;
+let playerRecord = {
+	name: 0,
+	stars: 0,
+	moves: 0,
+	missed: 0,
+	time: 0,
+	date: 0
+};
 
 function startTimer() {
 	intervalObj = setInterval(function(){
@@ -240,10 +248,33 @@ $('#congratulations').on('show.bs.modal', function (e) {
 	$('.congrat-stars').html(finalStars);
 	$('.congrat-moves').text(i + " " + "Moves");
 	$('.congrat-errors').text(w + " " + "Missed");
-	$('.congrat-timer').text(min + ":" + sec);
-})
+	finalTime = min + ":" + sec;
+	$('.congrat-timer').text(finalTime);
+});
+
+// Save current game data to local storage
+function saveStorage() {
+	saveButton.setAttribute('class', 'btn btn-primary saved');
+	saveButton.textContent = 'Saved!';
+	// Update playerRecord object with current game stats
+	playerRecord.name = document.querySelector('.name-input').value;
+	playerRecord.stars = finalStars;
+	playerRecord.moves = i;
+	playerRecord.missed = w;
+	// Save time as elapsed seconds ir order to be compared between two players
+	playerRecord.time = cnt;
+	playerRecord.date = new Date();
+	// Turn playerRecord object into a string
+	playerString = JSON.stringify(playerRecord);
+	// Player data saved to local storage. Lower score ranks first, date is used as tiebreaker
+	let score = cnt + w + "-" + playerRecord.date.valueOf();
+	localStorage.setItem(score, playerString);
+	saveButton.setAttribute('disabled', true);
+}
 
 const startClick = document.getElementById('start');
 const cardClick = document.querySelector('.deck');
+const saveButton = document.getElementById('save-record');
 startClick.addEventListener('click', startTimer);
+saveButton.addEventListener('click', saveStorage);
 

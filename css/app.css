@@ -151,8 +151,7 @@ img, embed, object, video {
     display: block;
     font-size: 2em;
     margin: 0 auto;
-    padding-bottom: 1em;
-    width: 100%;
+    margin-bottom: 1em;
     text-align: center;
     border: none;
     outline: none;
@@ -171,8 +170,8 @@ img, embed, object, video {
     display: block;
     margin: 0 auto;
     padding-top: 1em;
-    width: 100%;
     text-align: center;
+    width: 100%;
 }
 
 .congrat-stars {
@@ -219,4 +218,21 @@ img, embed, object, video {
 .congrat-title {
     text-align: center;
     margin: 0 0 0 auto;
+}
+
+.modal-footer .saved {
+    background: #02ccba;
+    border: #02ccba;
+}
+
+.modal-footer .name-label {
+    display: inline-block;
+    font-size: 1rem;
+    margin: 0;
+    vertical-align: middle;
+}
+
+.modal-footer .name-input {
+    caret-color: #007bff;
+    font-size: 1rem;
 }
