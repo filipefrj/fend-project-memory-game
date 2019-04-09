@@ -55,6 +55,8 @@ let playerRecord = {
 	time: 0,
 	date: 0
 };
+let rankPlayer;
+let objectPlayer;
 
 // Start Timer and display running timer at the score panel
 function startTimer() {
@@ -296,22 +298,87 @@ function saveStorage() {
 	playerRecord.missed = w;
 	// Save time as elapsed seconds ir order to be compared between two players
 	playerRecord.time = cnt;
-	playerRecord.date = new Date();
+	playerRecord.date = new Date().valueOf();
 	// Turn playerRecord object into a string
 	playerString = JSON.stringify(playerRecord);
 	// Player data saved to local storage. Lower score ranks first, date is used as tiebreaker
-	let score = cnt + w + "-" + playerRecord.date.valueOf();
+	let score = (w * 10) + cnt;
+	(score < 100) ? score = '0' + score : score;
+	score = score + '-' + playerRecord.date;
 	localStorage.setItem(score, playerString);
 	saveButton.setAttribute('disabled', true);
+}
+
+// Creates and displays the Leaderboard using local storage data
+function showLeaderboard() {
+	$('h1').text('Leaderboard');
+	// Remove game deck and score panel
+	$('.score-panel').remove();
+	$('.deck').remove();
+	// Insert restart game option
+	$('div.container').after('<section class="container rank-panel"></section>');
+	$('.rank-panel').append('<div class="row"></div>');
+	$('div.row').append('<p class="restart">Restart Game</p>');
+	$('div.row').append('<button onclick="location.reload(true)" class="restart-button"></button>');
+	$('.restart-button').append('<span class="fa fa-repeat"></span>');
+	// Insert Leaderboard
+	$('.rank-panel').after('<table class="leaderboard"></table>');
+	$('.leaderboard').append('<thead class="rank-head"></thead>');
+	$('.rank-head').append('<tr></tr>');
+	// Leaderboard table heading
+	$('.rank-head:first-child').append('<th>Rank</th>');
+	$('.rank-head:first-child').append('<th>Player</th>');
+	$('.rank-head:first-child').append('<th>Stars</th>');
+	$('.rank-head:first-child').append('<th>Moves</th>');
+	$('.rank-head:first-child').append('<th>Missed</th>');
+	$('.rank-head:first-child').append('<th>Time</th>');
+	$('.rank-head:first-child').append('<th>Date</th>');
+	// Leaderboard table body
+	$('.leaderboard').append('<tbody class="rank-body"></tbody>');
+	for (let i = 0; i < localStorage.length; ++i) {
+		let j = i + 1;
+		rankPlayer = localStorage.getItem(localStorage.key(i));
+		objectPlayer = JSON.parse(rankPlayer);
+		// Build the date in a readable format
+		let playerDate = new Date(objectPlayer.date);
+		let dd = playerDate.getDate();
+		(dd < 10) ? dd = '0' + dd : dd;
+		let mm = playerDate.getMonth() + 1;
+		(mm < 10) ? mm = '0' + mm : mm;
+		let yyyy = playerDate.getFullYear();
+		let hh = playerDate.getHours();
+		(hh < 10) ? hh = '0' + hh : hh;
+		let mn = playerDate.getMinutes();
+		(mn < 10) ? mn = '0' + mn : mn;
+		let sc = playerDate.getSeconds();
+		(sc < 10) ? sc = '0' + sc : sc;
+		let formatDate = dd + '/' + mm + '/' + yyyy + ' ' + hh + ':' + mn + ':' + sc;
+		// Print every player info from the local storage to the Leaderboard
+		$('.rank-body').append('<tr></tr>');
+		$('.rank-body tr:last-child').append('<td>' + j + '</td>');
+		$('.rank-body tr:last-child').append('<td>' + objectPlayer.name + '</td>');
+		$('.rank-body tr:last-child').append('<td class="rank-stars"><ul class="stars">' + objectPlayer.stars + '</ul></td>');
+		$('.rank-body tr:last-child').append('<td>' + objectPlayer.moves + '</td>');
+		$('.rank-body tr:last-child').append('<td>' + objectPlayer.missed + '</td>');
+		$('.rank-body tr:last-child').append('<td>' + objectPlayer.time + 's' + '</td>');
+		$('.rank-body tr:last-child').append('<td>' + formatDate  + '</td>');
+		// Highlight current player
+		if (objectPlayer.date === playerRecord.date) {
+			$('.rank-body tr:last-child td').addClass('player');
+		}
+	}
 }
 
 // Constants declared bellow are global
 const startClick = document.getElementById('start');
 const cardClick = document.querySelector('.deck');
 const saveButton = document.getElementById('save-record');
+const viewLeaderboard = document.getElementById('view-leaderboard');
 
 // Start the game after the banner is clicked
 startClick.addEventListener('click', startTimer);
-// Save player name to the Player Rankings
+// Save player name to the Leaderboard
 saveButton.addEventListener('click', saveStorage);
+// Open Leaderboard through Congratulations Modal
+viewLeaderboard.addEventListener('click', showLeaderboard)
 
