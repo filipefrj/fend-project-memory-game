@@ -5,10 +5,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>Matching Game</title>
+    <title>Memory Game</title>
 
     <meta name="description" content="Memory Game">
     <meta name="author" content="Filipe Feijó de Souza">
+
+    <link rel="icon" href="img/favicon.ico">
 
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
 
@@ -37,12 +39,12 @@
 <body>
 
     <div class="container">
-        <header>
-            <h1>Matching Game</h1>
+        <header class="row justify-content-center game-title">
+            <h1 class="col">Memory Game</h1>
         </header>
 
-        <section class="score-panel">
-        	<ul class="stars">
+        <section class="row score-panel">
+        	<ul class="col-sm-auto justify-content-left stars">
         		<li><i class="fa fa-star"></i></li>
         		<li><i class="fa fa-star"></i></li>
         		<li><i class="fa fa-star"></i></li>
@@ -50,20 +52,22 @@
         		<li><i class="fa fa-star"></i></li>
         	</ul>
 
-        	<span class="moves">0 Moves</span>
+        	<span class="col-sm-auto justify-content-left moves">0 Moves</span>
 
-        	<p id="timer" class="timer">00:00</p>
+            <div class="col-sm justify-content-center"></div>
 
-            <button onclick="location.reload(true)" class="restart">
+        	<span id="timer" class="col-sm-auto justify-content-right timer">00:00</span>
+
+            <button onclick="location.reload(true)" class="col-sm-1 justify-content-end restart">
         		<span class="fa fa-repeat"></span>
         	</button>
         </section>
 
-        <section id="start" class="start">
-        	<p>Click to Start!</p>
+        <section id="start" class="row justify-content-center start">
+        	<span class="col">Click to Start!</span>
         </section>
 
-        <ul class="deck">
+        <ul class="row deck">
             <li class="card">
                 <i class="fa fa-diamond"></i>
             </li>
