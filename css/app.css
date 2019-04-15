@@ -443,18 +443,21 @@ img, embed, object, video {
 @media screen and (max-width: 374px) {
     .score-panel {
         width: 213px;
+        font-size: 0.5em;
     }
 }
 
 @media screen and (min-width: 375px) and (max-width: 480px) {
     .score-panel {
         width: 320px;
+        font-size: 0.6em;
     }
 }
 
 @media screen and (min-width: 481px) and (max-width: 720px) {
     .score-panel {
         width: 426px;
+        font-size: 0.75em;
     }
 }
 
@@ -637,4 +640,47 @@ img, embed, object, video {
 .rank-stars .stars li {
     list-style: none;
     display: inline-block;
+}
+
+/* Responsive styles for the Leaderboard */
+@media screen and (max-width: 374px) {
+    .leaderboard-rank {
+        font-size: 0.5em;
+    }
+
+    .rank-panel .restart {
+        padding: 0 8px;
+    }
+
+    .rank-panel .restart-button {
+        font-size: 0.5em;
+    }
+}
+
+@media screen and (min-width: 375px) and (max-width: 480px) {
+    .leaderboard-rank {
+        font-size: 0.6em;
+    }
+
+    .rank-panel .restart {
+        padding: 0 10px;
+    }
+
+    .rank-panel .restart-button {
+        font-size: 0.6em;
+    }
+}
+
+@media screen and (min-width: 481px) and (max-width: 720px) {
+    .leaderboard-rank {
+        font-size: 0.75em;
+    }
+
+    .rank-panel .restart {
+        padding: 0 12px;
+    }
+
+    .rank-panel .restart-button {
+        font-size: 0.75em;
+    }
 }
