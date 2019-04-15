@@ -178,10 +178,10 @@ img, embed, object, video {
     font-size: 4em;
     margin: 0;
     padding: 1em;
-    position: absolute;
+    position: relative;
     text-align: center;
-    top: 45%;
-    width: 100%;
+    top: -484px;
+    width: 100vw;
     z-index: 1;
 }
 
@@ -224,7 +224,7 @@ img, embed, object, video {
     .start {
         font-size: 1em;
         padding: 1em;
-        top: 45%;
+        top: -164px;
     }
 
 }
@@ -267,7 +267,7 @@ img, embed, object, video {
     .start {
         font-size: 1.5em;
         padding: 1.5em;
-        top: 45%;
+        top: -250px;
     }
 
 }
@@ -305,8 +305,8 @@ img, embed, object, video {
 
     .start {
         font-size: 2.5em;
-        padding: 1em;
-        top: 45%;
+        padding: 2.5em;
+        top: -356px;
     }
 }
 
@@ -344,7 +344,7 @@ img, embed, object, video {
     .start {
         font-size: 3em;
         padding: 1.5em;
-        top: 45%;
+        top: -412px;
     }
 }
 
@@ -383,7 +383,7 @@ img, embed, object, video {
     .start {
         font-size: 3em;
         padding: 1.5em;
-        top: 45%;
+        top: -428px;
     }
 }
 
@@ -415,6 +415,10 @@ img, embed, object, video {
     background-color: transparent;
 }
 
+.score-panel .restart:hover {
+    color: #02b3e4;
+}
+
 .score-panel .timer {
     margin: 0;
     padding-left: 0;
@@ -425,6 +429,14 @@ img, embed, object, video {
     display: inline-block;
     padding-left: 15px;
     padding-right: 15px;
+}
+
+.score-panel .leaderboard {
+    cursor: pointer;
+}
+
+.score-panel .leaderboard:hover {
+    color: #02b3e4;
 }
 
 /* Responsive styles for the score panel */
@@ -563,7 +575,7 @@ img, embed, object, video {
  * Styles for the Leaderboard
  */
 
-.leaderboard {
+.leaderboard-rank {
     align-items: center;
     border-radius: 10px;
     margin: 0 auto;
@@ -591,11 +603,12 @@ img, embed, object, video {
 
 .rank-panel {
     text-align: center;
-    width: 20vw;
+    width: 60vw;
 }
 
 .rank-panel .restart {
     display: inline-block;
+    padding: 0 15px;
 }
 
 .rank-panel .restart-button {
@@ -603,6 +616,11 @@ img, embed, object, video {
     outline: none;
     background-color: transparent;
     height: 26px;
+    margin: 15px auto;
+}
+
+.rank-panel .restart-button:hover {
+    color: #02b3e4;
 }
 
 .rank-stars {

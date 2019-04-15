@@ -44,7 +44,9 @@
         </header>
 
         <section class="row score-panel">
-        	<ul class="col-sm-auto justify-content-left stars">
+            <span class="col-sm-auto leaderboard">Leaderboard</span>
+
+        	<ul class="col-sm-auto stars">
         		<li><i class="fa fa-star"></i></li>
         		<li><i class="fa fa-star"></i></li>
         		<li><i class="fa fa-star"></i></li>
@@ -52,19 +54,15 @@
         		<li><i class="fa fa-star"></i></li>
         	</ul>
 
-        	<span class="col-sm-auto justify-content-left moves">0 Moves</span>
+            <div class="col-sm"></div>
 
-            <div class="col-sm justify-content-center"></div>
+        	<span class="col-sm-auto moves">0 Moves</span>
 
-        	<span id="timer" class="col-sm-auto justify-content-right timer">00:00</span>
+        	<span id="timer" class="col-sm-auto timer">00:00</span>
 
-            <button onclick="location.reload(true)" class="col-sm-1 justify-content-end restart">
+            <button onclick="location.reload(true)" class="col-sm-1 restart">
         		<span class="fa fa-repeat"></span>
         	</button>
-        </section>
-
-        <section id="start" class="row justify-content-center start">
-        	<span class="col">Click to Start!</span>
         </section>
 
         <ul class="row deck">
@@ -117,6 +115,11 @@
                 <i class="fa fa-cube"></i>
             </li>
         </ul>
+
+        <section id="start" class="row justify-content-center start">
+            <span class="col">Click to Start!</span>
+        </section>
+
     </div>
     <!-- Modal -->
 		<div class="modal fade" id="congratulations" tabindex="-1" role="dialog" aria-labelledby="congratulationsTitle" aria-hidden="true">

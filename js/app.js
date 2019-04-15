@@ -311,6 +311,9 @@ function saveStorage() {
 
 // Creates and displays the Leaderboard using local storage data
 function showLeaderboard() {
+	if (cnt === 0) {
+		startClick.remove();
+	}
 	$('h1').text('Leaderboard');
 	// Remove game deck and score panel
 	$('.score-panel').remove();
@@ -318,12 +321,12 @@ function showLeaderboard() {
 	// Insert restart game option
 	$('div.container').after('<section class="container rank-panel"></section>');
 	$('.rank-panel').append('<div class="row"></div>');
-	$('div.row').append('<p class="restart">Restart Game</p>');
 	$('div.row').append('<button onclick="location.reload(true)" class="restart-button"></button>');
+	$('.restart-button').append('<span class="restart">Restart Game</span>');
 	$('.restart-button').append('<span class="fa fa-repeat"></span>');
 	// Insert Leaderboard
-	$('.rank-panel').after('<table class="leaderboard"></table>');
-	$('.leaderboard').append('<thead class="rank-head"></thead>');
+	$('.rank-panel').after('<table class="leaderboard-rank"></table>');
+	$('.leaderboard-rank').append('<thead class="rank-head"></thead>');
 	$('.rank-head').append('<tr></tr>');
 	// Leaderboard table heading
 	$('.rank-head:first-child').append('<th>Rank</th>');
@@ -334,7 +337,7 @@ function showLeaderboard() {
 	$('.rank-head:first-child').append('<th>Time</th>');
 	$('.rank-head:first-child').append('<th>Date</th>');
 	// Leaderboard table body
-	$('.leaderboard').append('<tbody class="rank-body"></tbody>');
+	$('.leaderboard-rank').append('<tbody class="rank-body"></tbody>');
 	for (let i = 0; i < localStorage.length; ++i) {
 		let j = i + 1;
 		rankPlayer = localStorage.getItem(localStorage.key(i));
@@ -370,6 +373,7 @@ function showLeaderboard() {
 }
 
 // Constants declared bellow are global
+const goLeaderboard = document.querySelector('.leaderboard');
 const startClick = document.getElementById('start');
 const cardClick = document.querySelector('.deck');
 const saveButton = document.getElementById('save-record');
@@ -377,8 +381,10 @@ const viewLeaderboard = document.getElementById('view-leaderboard');
 
 // Start the game after the banner is clicked
 startClick.addEventListener('click', startTimer);
+// Open Leaderboard through score panel at anytime
+goLeaderboard.addEventListener('click', showLeaderboard);
 // Save player name to the Leaderboard
 saveButton.addEventListener('click', saveStorage);
 // Open Leaderboard through Congratulations Modal
-viewLeaderboard.addEventListener('click', showLeaderboard)
+viewLeaderboard.addEventListener('click', showLeaderboard);
 
