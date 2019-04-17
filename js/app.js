@@ -324,6 +324,10 @@ function showLeaderboard() {
 	$('div.row').append('<button onclick="location.reload(true)" class="restart-button"></button>');
 	$('.restart-button').append('<span class="restart">Restart Game</span>');
 	$('.restart-button').append('<span class="fa fa-repeat"></span>');
+	// Insert clear leaderboard option
+	$('div.row').append('<button type="button" class="clear-button" data-toggle="modal" data-target="#clear-leaderboard"></button>');
+	$('.clear-button').append('<span class="clear">Clear Leaderboard</span>');
+	$('.clear-button').append('<span class="fa fa-times"></span>');
 	// Insert Leaderboard
 	$('.rank-panel').after('<table class="leaderboard-rank"></table>');
 	$('.leaderboard-rank').append('<thead class="rank-head"></thead>');
@@ -372,12 +376,18 @@ function showLeaderboard() {
 	}
 }
 
+function clearLeaderboard() {
+	localStorage.clear();
+	$('.rank-body').remove();
+}
+
 // Constants declared bellow are global
 const goLeaderboard = document.querySelector('.leaderboard');
 const startClick = document.getElementById('start');
 const cardClick = document.querySelector('.deck');
 const saveButton = document.getElementById('save-record');
 const viewLeaderboard = document.getElementById('view-leaderboard');
+const clearButton = document.getElementById('clear-button');
 
 // Start the game after the banner is clicked
 startClick.addEventListener('click', startTimer);
@@ -387,4 +397,6 @@ goLeaderboard.addEventListener('click', showLeaderboard);
 saveButton.addEventListener('click', saveStorage);
 // Open Leaderboard through Congratulations Modal
 viewLeaderboard.addEventListener('click', showLeaderboard);
+// Erase Leaderboard
+clearButton.addEventListener('click', clearLeaderboard);
 

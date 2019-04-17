@@ -557,6 +557,11 @@ img, embed, object, video {
     margin: 0 0 0 auto;
 }
 
+.modal-footer .clear {
+    background: #ff4300;
+    border: #ff4300;
+}
+
 .modal-footer .saved {
     background: #02ccba;
     border: #02ccba;
@@ -581,7 +586,7 @@ img, embed, object, video {
 .leaderboard-rank {
     align-items: center;
     border-radius: 10px;
-    margin: 0 auto;
+    margin: 0 auto 3em auto;
     width: 80vw;
     height: auto;
     padding: 32px;
@@ -609,6 +614,11 @@ img, embed, object, video {
     width: 60vw;
 }
 
+.rank-panel .clear {
+    display: inline-block;
+    padding: 0 15px;
+}
+
 .rank-panel .restart {
     display: inline-block;
     padding: 0 15px;
@@ -624,6 +634,18 @@ img, embed, object, video {
 
 .rank-panel .restart-button:hover {
     color: #02b3e4;
+}
+
+.rank-panel .clear-button {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    height: 26px;
+    margin: 15px auto;
+}
+
+.rank-panel .clear-button:hover {
+    color: #ff4300;
 }
 
 .rank-stars {

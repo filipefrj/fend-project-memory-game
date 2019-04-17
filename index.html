@@ -163,7 +163,7 @@
 							<label class="name-label" for="leaderboard">Enter your name:</label>
 							<input class="name-input" type="text" name="leaderboard" minlength="3" maxlength="10" size="10">
 							<button id="save-record" type="button" class="btn btn-primary">Save</button>
-							<button type="button" id="view-leaderboard" class="btn btn-secondary" data-dismiss="modal">Leaderboard</button>
+							<button id="view-leaderboard" type="button" class="btn btn-secondary" data-dismiss="modal">Leaderboard</button>
 						</div>
 			  		</div>
 					<!-- End of Modal body -->
@@ -171,5 +171,27 @@
 			</div>
 		</div>
 		<!-- End of Modal-->
+        <!-- Clear Leaderboard Alert Modal -->
+        <div class="modal fade" id="clear-leaderboard" tabindex="-1" role="dialog" aria-labelledby="clear-leaderboardLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Attention! Clear Leaderboard!</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                        <div class="modal-body">
+                            <p>Are you sure you want to erase all saved games data?</p>
+                            <p>This action cannot be undone.</p>
+                        </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button id="clear-button" type="button" class="btn btn-primary clear" data-dismiss="modal">Erase Data</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End of Clear Leaderboard -->
 </body>
 </html>
