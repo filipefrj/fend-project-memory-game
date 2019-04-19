@@ -1,5 +1,5 @@
 # Memory Game
-`version 1.0.0`
+`version 1.1.0`
 
 ## Table of Contents
 
@@ -13,6 +13,7 @@
 8. [The Leaderboard](#the-leaderboard)
 9. [Compatibility](#compatibility)
 10. [Dependencies](#dependencies)
+11. [Updates](#updates)
 
 ## Instructions
 
@@ -154,7 +155,7 @@ Maximum length 10 characters and minimum length 3 characters, special characters
 
 ### Show Leaderboard
 
-Click on Leaderboard button to view the `leaderboard` table. The Leaderboard will be displayed on the same screen.
+Click on `Leaderboard` button to view the leaderboard table. The Leaderboard will be displayed on the same screen.
 
 ___
 
@@ -162,14 +163,31 @@ ___
 
 ![Leaderboard](img/readme-11.jpg "Leaderboard")
 
-The Leaderboard shows all saved players statistcs and ranks them based on a score system that produces a result similar to the star rating and uses the date as the tiebreaker. An earlier date will rank first, in which a player needs to overcome a previous recorded score to be on top of it.
+The Leaderboard shows all saved players statistics and ranks them based on a score system that produces a result similar to the star rating and uses the date as the tiebreaker. An earlier date will rank first, in which a player needs to overcome a previous recorded score to be on top of it.
 
 The current player is always highlighted in blue. The highlight won't appear if you go to the leaderboard without completing a game and saving a new record.
 
+### Restart Game
+
+![Leaderboard with Restart and Clear buttons](img/readme-12.jpg "Restart and Clear buttons")
+
 The `Restart Game` button takes the player for the initial screen, before the game starts.
 
-> Good Game!
+### Clear Leaderboard
 
+![Erased Leaderboard](img/readme-13.jpg "Clear Leaderboard!")
+
+The `Clear Leaderboard` button allows you to erase all saved games data and start the leaderboard all over again. This is good if the leaderboard gets too long or if you just have too many bad games you want to delete from the rankings.
+
+![Attention! Clear Leaderboard!](img/readme-14.jpg "Attention!")
+
+An alert message appears to confirm if the player really wants to erase all saved game records. Click `Close` to return to the leaderboard screen without applying any changes.
+
+![Attention! Erase Data!](img/readme-15.jpg "Erase Data!")
+
+Clicking the `Erase Data` button will permanently erase the leaderboard and all saved games. And the player is ready to start all over again, maybe even inviting new players to build a new leaderboard.
+
+> Good Game!
 
 ## Compatibility
 
@@ -178,9 +196,15 @@ The `Restart Game` button takes the player for the initial screen, before the ga
 * Probably working with previous versions of **Google Chrome** and **Mozilla Firefox**
 * Not working properly within **Microsoft Internet Explorer** and **Microsoft Edge**
 
-
 ## Dependencies
 
 * [Bootstrap `4.3.1`](https://getbootstrap.com/docs/4.3/getting-started/introduction/)
 * [JQuery `3.3.1`](https://jquery.com/)
 * [Popper.js `1.14.7`](https://popper.js.org/)
+
+## Updates
+
+Version 1.1.0
+
+* Add `Clear Leaderboard` button to the leaderboard
+* Change game time display format on the leaderboard
