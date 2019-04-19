@@ -2,6 +2,7 @@
  * Create a list that holds all of your cards
  */
 
+// Decided not to use the cards list here, but to extract the cards array from the deck of cards HTML element.
 
 /*
  * Display the cards on the page
@@ -360,6 +361,12 @@ function showLeaderboard() {
 		let sc = playerDate.getSeconds();
 		(sc < 10) ? sc = '0' + sc : sc;
 		let formatDate = dd + '/' + mm + '/' + yyyy + ' ' + hh + ':' + mn + ':' + sc;
+		// Display time in minutes and seconds format
+		let mnt = Math.floor(objectPlayer.time / 60);
+		let scd = objectPlayer.time - (mnt * 60);
+		(mnt < 10) ? mnt = '0' + mnt : mnt;
+		(scd < 10) ? scd = '0' + scd : scd;
+		let formatTime = mnt + ':' + scd;
 		// Print every player info from the local storage to the Leaderboard
 		$('.rank-body').append('<tr></tr>');
 		$('.rank-body tr:last-child').append('<td>' + j + '</td>');
@@ -367,8 +374,8 @@ function showLeaderboard() {
 		$('.rank-body tr:last-child').append('<td class="rank-stars"><ul class="stars">' + objectPlayer.stars + '</ul></td>');
 		$('.rank-body tr:last-child').append('<td>' + objectPlayer.moves + '</td>');
 		$('.rank-body tr:last-child').append('<td>' + objectPlayer.missed + '</td>');
-		$('.rank-body tr:last-child').append('<td>' + objectPlayer.time + 's' + '</td>');
-		$('.rank-body tr:last-child').append('<td>' + formatDate  + '</td>');
+		$('.rank-body tr:last-child').append('<td>' + formatTime + '</td>');
+		$('.rank-body tr:last-child').append('<td>' + formatDate + '</td>');
 		// Highlight current player
 		if (objectPlayer.date === playerRecord.date) {
 			$('.rank-body tr:last-child td').addClass('player');
