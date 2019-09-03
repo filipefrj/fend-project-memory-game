@@ -1,6 +1,8 @@
 # Memory Game
 `version 1.1.0`
 
+Play: <https://filipefrj.github.io/fend-project-memory-game/>
+
 ## Table of Contents
 
 1. [Instructions](#instructions)
@@ -31,7 +33,7 @@ For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## How to Play
 
-The game is a classic **Memory Game** with 16 cards, 8 pairs.
+The game is a classic **[Memory Game](https://filipefrj.github.io/fend-project-memory-game/)** with 16 cards, 8 pairs.
 
 The player needs to match the 8 pairs to finish the game.
 
@@ -191,10 +193,10 @@ Clicking the `Erase Data` button will permanently erase the leaderboard and all 
 
 ## Compatibility
 
-* **Google Chrome** `73.0.3683.103`
-* **Mozilla Firefox** `66.0.3`
+* **Google Chrome** `73.0.3683.103` and above
+* **Mozilla Firefox** `66.0.3` and above
 * Probably working with previous versions of **Google Chrome** and **Mozilla Firefox**
-* Not working properly within **Microsoft Internet Explorer** and **Microsoft Edge**
+* Not working properly with **Microsoft Internet Explorer**, **Microsoft Edge** and **Safari**
 
 ## Dependencies
 
